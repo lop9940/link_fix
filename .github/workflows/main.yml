@@ -20,4 +20,4 @@ jobs:
       - name: Get Python version
         run: python -V
       - name: Run Python
-        run: python test.py
+        run: python .github/workflows/script/test.py
