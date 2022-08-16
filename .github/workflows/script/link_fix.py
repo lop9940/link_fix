@@ -60,14 +60,14 @@ def generate_line(result):
   return result.group(1)+"click "+node_id+" \""+github_url+"\""
 
 # https://github.com/アカウント名/リポジトリ名.git
-# https://github.com/lop9940/markdown_deliverable/blob/add-github-actions-yaml/D01_dTest1.md
+# https://github.com/lop9940/link_fix/blob/feature/action_yaml_add_test/README.md
 
 def git_url_nofile():
   http="https://github.com"
   account="lop9940"# 後入
-  repository="markdown_deliverable"# 後入
+  repository="link_fix"# 後入
   blob="blob"
-  branch="add-github-actions-yaml"# 後入
+  branch="action_yaml_add_test"# 後入
   return "/".join([http,account,repository,blob,branch])
 
 def re_pattern():
