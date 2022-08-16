@@ -2,9 +2,9 @@ import os
 import re
 import shutil
 
-def file_lines_split(file_name,first_index_target,last_index_target):
+def file_lines_split(file_path,first_index_target,last_index_target):
 
-  with open(file_name, 'r') as file:
+  with open(file_path, 'r') as file:
     lines = file.readlines()
 
   lines_replace = [line.replace('\n', '') for line in lines]
@@ -77,15 +77,15 @@ def re_pattern():
 
 
 
-header,mermeid,footer=file_lines_split("P01_test.md","```mermaid","```")
+header,mermeid,footer=file_lines_split("../../P01_test.md","```mermaid","```")
 
 new_mermaid = generate_mermaid_lines(mermeid) 
 
 new_lines=header+new_mermaid+footer
 
-shutil.rmtree("backup")
-os.mkdir("backup")
-shutil.copy("P01_test.md","backup/P01_test_backup.md")
+shutil.rmtree("../../backup")
+os.mkdir("../../backup")
+shutil.copy("../../P01_test.md","backup/P01_test_backup.md")
 
-with open("P01_test.md", "w") as file:
+with open("../../P01_test.md", "w") as file:
   file.write("\n".join(new_lines))
