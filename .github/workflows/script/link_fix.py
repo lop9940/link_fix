@@ -67,7 +67,7 @@ def git_url_nofile():
   account="lop9940"# 後入
   repository="link_fix"# 後入
   blob="blob"
-  branch="action_yaml_add_test"# 後入
+  branch="feature/action_yaml_add_test"# 後入
   return "/".join([http,account,repository,blob,branch])
 
 def re_pattern():
