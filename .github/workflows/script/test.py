@@ -1,2 +1,7 @@
+
+import sys
+
+argv=sys.argv
+
 print("test")
-print("hello")
+print(argv[1])
