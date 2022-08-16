@@ -18,12 +18,11 @@ jobs:
           python-version: '3.8'
           architecture: 'x64'
       - name: Get Python version
-        run: 
-            python -V
+        run: python -V
       - name: Run Python
-        run: 
-            python .github/workflows/script/link_fix.py
-            pwd
-            git add .
-            git commit -m "link_fix"
-            git push
+        run: python .github/workflows/script/link_fix.py
+      - name: Run Git
+        run: |
+        git add .
+        git commit -m "Update by GitHub Action"
+        git push
