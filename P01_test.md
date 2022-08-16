@@ -42,6 +42,7 @@ flowchart TD
     P04([pTest4])
 
     D01[/dTest1/]
+    click D01 "lop9940/link_fix/blob/feature/action_yaml_add_test/README.md"
     D02[/dTest2/]
     D03[/dTest3/]
     D04[/dTest4/]
