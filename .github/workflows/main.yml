@@ -23,6 +23,6 @@ jobs:
         run: python .github/workflows/script/link_fix.py
       - name: Run Git
         run: |
-        git add .
-        git commit -m "Update by GitHub Action"
-        git push
+          git add .
+          git commit -m "Update by GitHub Action"
+          git push
