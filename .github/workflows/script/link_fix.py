@@ -79,7 +79,7 @@ def re_pattern():
   D="(\s*?)(D\d+)(\[/)(.*?)(/\])"
   return(P,D)
 
-print(git_url_nofile)
+print(git_url_nofile())
 
 # header,mermeid,footer=file_lines_split("P01_test.md","```mermaid","```")
 
