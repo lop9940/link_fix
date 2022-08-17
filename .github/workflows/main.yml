@@ -17,8 +17,8 @@ jobs:
         with:
           python-version: '3.8'
           architecture: 'x64'
-      # - name: Run Python
-      #   run: python .github/workflows/script/link_fix.py "${{ github.repository }}" "${{ github.ref_name }}"
+      - name: Run Python
+        run: python .github/workflows/add_meraid_link/link_fix.py "${{ github.repository }}" "${{ github.ref_name }}"
       # - name: Run Git
       #   run: |
       #     git config --global user.name "lop9940"
