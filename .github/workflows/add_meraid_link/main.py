@@ -59,11 +59,12 @@ def re_pattern_object():
 
 # add line [click node_name "URL"]
 
+
 def generate_line(result):
 
     node_id = result.group(2)
     node_name = result.group(4)
-    dir = name.P_dir if node_id in "p" else name.D_dir
+    dir = name.P_dir if "p" in node_id else name.D_dir
     file = node_name+".md"
     github_url = "/".join([git_url_nofile(), dir, file])
     return result.group(1)+"click "+node_id+" \""+github_url+"\""
@@ -89,7 +90,8 @@ print(new_lines)
 
 shutil.rmtree(name.backup_dir)
 os.mkdir(name.backup_dir)
-shutil.copy(name.P_dir+"/"+name.target_file_name, name.backup_dir+"/"+name.target_file_name)
+shutil.copy(name.P_dir+"/"+name.target_file_name,
+            name.backup_dir+"/"+name.target_file_name)
 
 with open(name.P_dir+"/"+name.target_file_name, "w") as file:
     file.write("\n".join(new_lines))
