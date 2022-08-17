@@ -44,6 +44,8 @@ def generate_mermaid_lines(lines):
         elif D_result is not None:
             add_line = generate_line(D_result)
 
+        print(add_line)
+
         generate_lines.append(add_line)
     return generate_lines
 
@@ -64,8 +66,9 @@ def generate_line(result):
 
     node_id = result.group(2)
     node_name = result.group(4)
-    file = node_id+"_"+node_name+".md"
-    github_url = "/".join([git_url_nofile(), file])
+    dir = name.P_dir if node_id in "P" else name.D_dir
+    file = node_name+".md"
+    github_url = "/".join([git_url_nofile(), dir, file])
     return result.group(1)+"click "+node_id+" \""+github_url+"\""
 
 # https://github.com/アカウント名/リポジトリ名.git
