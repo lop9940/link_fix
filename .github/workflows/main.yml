@@ -1,4 +1,4 @@
-name: link_fix
+name: add_mermaid_link
 
 on:
   push:
@@ -17,11 +17,8 @@ jobs:
         with:
           python-version: '3.8'
           architecture: 'x64'
-      - name: Get Python version
-        run: python -V
       - name: Run Python
-        run: python .github/workflows/script/test.py "${{ github.repository }}" "${{ github.ref_name }}"
-      #   run: python .github/workflows/script/link_fix.py
+        run: python .github/workflows/add_meraid_link/main.py "${{ github.repository }}" "${{ github.ref_name }}"
       # - name: Run Git
       #   run: |
       #     git config --global user.name "lop9940"
