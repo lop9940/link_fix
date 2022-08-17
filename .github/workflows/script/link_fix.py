@@ -73,18 +73,15 @@ def re_pattern():
   D="(\s*?)(D\d+)(\[/)(.*?)(/\])"
   return(P,D)
 
+header,mermeid,footer=file_lines_split("P01_test.md","```mermaid","```")
 
-print(git_url_nofile())
+new_mermaid = generate_mermaid_lines(mermeid) 
 
-# header,mermeid,footer=file_lines_split("P01_test.md","```mermaid","```")
+new_lines=header+new_mermaid+footer
 
-# new_mermaid = generate_mermaid_lines(mermeid) 
+shutil.rmtree("backup")
+os.mkdir("backup")
+shutil.copy("P01_test.md","backup/P01_test_backup.md")
 
-# new_lines=header+new_mermaid+footer
-
-# shutil.rmtree("backup")
-# os.mkdir("backup")
-# shutil.copy("P01_test.md","backup/P01_test_backup.md")
-
-# with open("P01_test.md", "w") as file:
-#   file.write("\n".join(new_lines))
+with open("P01_test.md", "w") as file:
+  file.write("\n".join(new_lines))
