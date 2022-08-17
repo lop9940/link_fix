@@ -44,8 +44,6 @@ def generate_mermaid_lines(lines):
         elif D_result is not None:
             add_line = generate_line(D_result)
 
-        print(add_line)
-
         generate_lines.append(add_line)
     return generate_lines
 
@@ -60,7 +58,6 @@ def re_pattern_object():
     return (P, D)
 
 # add line [click node_name "URL"]
-
 
 def generate_line(result):
 
@@ -87,6 +84,8 @@ header, mermeid, footer = file_lines_split(
 new_mermaid = generate_mermaid_lines(mermeid)
 
 new_lines = header+new_mermaid+footer
+
+print(new_lines)
 
 shutil.rmtree(name.backup_dir)
 os.mkdir(name.backup_dir)
