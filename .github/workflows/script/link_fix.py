@@ -1,6 +1,7 @@
 import os
 import re
 import shutil
+import sys
 
 def file_lines_split(file_path,first_index_target,last_index_target):
 
@@ -63,29 +64,32 @@ def generate_line(result):
 # https://github.com/lop9940/link_fix/blob/feature/action_yaml_add_test/README.md
 
 def git_url_nofile():
-  http="https://github.com"
-  account="lop9940"# 後入
-  repository="link_fix"# 後入
-  blob="blob"
-  branch="feature/action_yaml_add_test"# 後入
-  return "/".join([http,account,repository,blob,branch])
+  # http="https://github.com"
+  # account="lop9940"# 後入
+  # repository="link_fix"# 後入
+  # blob="blob"
+  # branch="feature/action_yaml_add_test"# 後入
+
+  repository=sys.argv[1] # ${{ github.repository }}
+  branch=sys.argv[2] # ${{ github.ref_name }}
+  return "/".join([repository,"blob",branch])
 
 def re_pattern():
   P="(\s*?)(P\d+)(\(\[)(.*?)(\]\))"
   D="(\s*?)(D\d+)(\[/)(.*?)(/\])"
   return(P,D)
 
+print(git_url_nofile)
 
+# header,mermeid,footer=file_lines_split("P01_test.md","```mermaid","```")
 
-header,mermeid,footer=file_lines_split("P01_test.md","```mermaid","```")
+# new_mermaid = generate_mermaid_lines(mermeid) 
 
-new_mermaid = generate_mermaid_lines(mermeid) 
+# new_lines=header+new_mermaid+footer
 
-new_lines=header+new_mermaid+footer
+# shutil.rmtree("backup")
+# os.mkdir("backup")
+# shutil.copy("P01_test.md","backup/P01_test_backup.md")
 
-shutil.rmtree("backup")
-os.mkdir("backup")
-shutil.copy("P01_test.md","backup/P01_test_backup.md")
-
-with open("P01_test.md", "w") as file:
-  file.write("\n".join(new_lines))
+# with open("P01_test.md", "w") as file:
+#   file.write("\n".join(new_lines))
