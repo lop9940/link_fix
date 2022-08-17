@@ -64,12 +64,6 @@ def generate_line(result):
 # https://github.com/lop9940/link_fix/blob/feature/action_yaml_add_test/README.md
 
 def git_url_nofile():
-  # http="https://github.com"
-  # account="lop9940"# 後入
-  # repository="link_fix"# 後入
-  # blob="blob"
-  # branch="feature/action_yaml_add_test"# 後入
-
   repository=sys.argv[1] # ${{ github.repository }}
   branch=sys.argv[2] # ${{ github.ref_name }}
   return "/".join([repository,"blob",branch])
@@ -79,15 +73,18 @@ def re_pattern():
   D="(\s*?)(D\d+)(\[/)(.*?)(/\])"
   return(P,D)
 
+
 header,mermeid,footer=file_lines_split("P01_test.md","```mermaid","```")
 
 new_mermaid = generate_mermaid_lines(mermeid) 
 
-new_lines=header+new_mermaid+footer
+print(generate_mermaid_lines())
 
-shutil.rmtree("backup")
-os.mkdir("backup")
-shutil.copy("P01_test.md","backup/P01_test_backup.md")
+# new_lines=header+new_mermaid+footer
 
-with open("P01_test.md", "w") as file:
-  file.write("\n".join(new_lines))
+# shutil.rmtree("backup")
+# os.mkdir("backup")
+# shutil.copy("P01_test.md","backup/P01_test_backup.md")
+
+# with open("P01_test.md", "w") as file:
+#   file.write("\n".join(new_lines))
