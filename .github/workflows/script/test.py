@@ -1,7 +1,7 @@
 
 import sys
 
-argv=repr(sys.argv)
+argv=sys.argv
 
 print("test")
 print(argv[1])
