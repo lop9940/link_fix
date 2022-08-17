@@ -31,21 +31,31 @@
 ## 1.3. PFD
 
 [このプロジェクトへのコントリビューションガイドライン](/D01_dTest1.md)
-
 ```mermaid
 flowchart TD
     P01([pTest1])
+    click P01 "lop9940/link_fix/blob/feature/actions-fix(python-using-python)/P01_pTest1.md"
     P02([pTest2])
+    click P02 "lop9940/link_fix/blob/feature/actions-fix(python-using-python)/P02_pTest2.md"
     P03([pTest3])
+    click P03 "lop9940/link_fix/blob/feature/actions-fix(python-using-python)/P03_pTest3.md"
     P04([pTest4])
+    click P04 "lop9940/link_fix/blob/feature/actions-fix(python-using-python)/P04_pTest4.md"
 
     D01[/dTest1/]
+    click D01 "lop9940/link_fix/blob/feature/actions-fix(python-using-python)/D01_dTest1.md"
     D02[/dTest2/]
+    click D02 "lop9940/link_fix/blob/feature/actions-fix(python-using-python)/D02_dTest2.md"
     D03[/dTest3/]
+    click D03 "lop9940/link_fix/blob/feature/actions-fix(python-using-python)/D03_dTest3.md"
     D04[/dTest4/]
+    click D04 "lop9940/link_fix/blob/feature/actions-fix(python-using-python)/D04_dTest4.md"
     D05[/dTest5/]
+    click D05 "lop9940/link_fix/blob/feature/actions-fix(python-using-python)/D05_dTest5.md"
     D06[/dTest6/]
+    click D06 "lop9940/link_fix/blob/feature/actions-fix(python-using-python)/D06_dTest6.md"
     D07[/dTest7/]
+    click D07 "lop9940/link_fix/blob/feature/actions-fix(python-using-python)/D07_dTest7.md"
 
     D01-->P01
     D01-->P02
