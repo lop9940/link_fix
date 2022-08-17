@@ -94,3 +94,4 @@ shutil.copy(name.target_file_name, name.backup_dir+"/"+name.target_file_name)
 
 with open(name.target_file_name, "w") as file:
     file.write("\n".join(new_lines))
+
