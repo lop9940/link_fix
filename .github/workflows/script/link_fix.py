@@ -74,11 +74,11 @@ def re_pattern():
   return(P,D)
 
 
-header,mermeid,footer=file_lines_split("P01_test.md","```mermaid","```")
+print(git_url_nofile())
 
-new_mermaid = generate_mermaid_lines(mermeid) 
+# header,mermeid,footer=file_lines_split("P01_test.md","```mermaid","```")
 
-print(generate_mermaid_lines())
+# new_mermaid = generate_mermaid_lines(mermeid) 
 
 # new_lines=header+new_mermaid+footer
 
