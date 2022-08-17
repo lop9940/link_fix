@@ -63,7 +63,7 @@ def generate_line(result):
 
     node_id = result.group(2)
     node_name = result.group(4)
-    dir = name.P_dir if node_id in "P" else name.D_dir
+    dir = name.P_dir if node_id in "p" else name.D_dir
     file = node_name+".md"
     github_url = "/".join([git_url_nofile(), dir, file])
     return result.group(1)+"click "+node_id+" \""+github_url+"\""
