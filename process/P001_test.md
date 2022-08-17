@@ -31,28 +31,28 @@
 
 ```mermaid
 flowchart TD
-    P01([pTest1])
-    P02([pTest2])
-    P03([pTest3])
-    P04([pTest4])
+    p01([P002_pTest1])
+    p02([P004_pTest2])
+    p03([P003_pTest3])
+    p04([P005_pTest4])
 
-    D01[/dTest1/]
-    D02[/dTest2/]
-    D03[/dTest3/]
-    D04[/dTest4/]
-    D05[/dTest5/]
-    D06[/dTest6/]
-    D07[/dTest7/]
+    d01[/D001_dTest1/]
+    d02[/D002_dTest2/]
+    d03[/D003_dTest3/]
+    d04[/D004_dTest4/]
+    d05[/D005_dTest5/]
+    d06[/D006_dTest6/]
+    d07[/D007_dTest7/]
 
-    D01-->P01
-    D01-->P02
-    P01-->D05
-    P01-->D06
-    P02<-->|更新|D04
-    P02-->D05
-    D06-->P03
-    D02-->P03
-    P03-->D07
-    D07-->P04
-    P04-->D03
+    d01-->p01
+    d01-->p02
+    p01-->d05
+    p01-->d06
+    p02<-->|更新|d04
+    p02-->d05
+    d06-->p03
+    d02-->p03
+    p03-->d07
+    d07-->p04
+    p04-->d03
 ```
