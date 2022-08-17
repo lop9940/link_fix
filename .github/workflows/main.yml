@@ -20,7 +20,7 @@ jobs:
       - name: Get Python version
         run: python -V
       - name: Run Python
-        run: echo "${{ github.ref_name }}"
+        # run: echo "${{ github.ref_name }}"
         run: echo "${{ github }}"
         # run: python .github/workflows/script/test.py ${{ github.ref_name }}
       #   run: python .github/workflows/script/link_fix.py
