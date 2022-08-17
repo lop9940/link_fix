@@ -1,4 +1,4 @@
-name: link_fix
+name: add_mermaid_link
 
 on:
   push:
