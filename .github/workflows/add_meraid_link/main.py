@@ -82,7 +82,7 @@ def git_url_nofile():
 
 
 header, mermeid, footer = file_lines_split(
-    name.target_file_name, search_target.first_target, search_target.last_target)
+    name.target_file_path, search_target.first_target, search_target.last_target)
 
 new_mermaid = generate_mermaid_lines(mermeid)
 
@@ -90,7 +90,7 @@ new_lines = header+new_mermaid+footer
 
 shutil.rmtree(name.backup_dir)
 os.mkdir(name.backup_dir)
-shutil.copy(name.target_file_name, name.backup_dir+"/"+name.target_file_name)
+shutil.copy(name.target_file_path, name.backup_dir+"/"+name.target_file_path)
 
-with open(name.target_file_name, "w") as file:
+with open(name.target_file_path, "w") as file:
     file.write("\n".join(new_lines))
