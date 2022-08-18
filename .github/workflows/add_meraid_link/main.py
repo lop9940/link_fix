@@ -9,14 +9,16 @@ import search_target
 
 
 def main():
-    target_file_path = "{name.P_dir}/{name.target_file_name}"
-    backup_file_path = "{name.backup_dir}/{name.target_file_name}"
+    target_file_path = f"{name.P_dir}/{name.target_file_name}"
+    backup_file_path = f"{name.backup_dir}/{name.target_file_name}"
+
+    print(target_file_path)
 
     header, mermeid, footer = file_lines_split(target_file_path)
 
     new_lines = generate_markdown_lines(header, mermeid, footer)
 
-    file_updata(target_file_path, backup_file_path, new_lines)
+    # file_updata(target_file_path, backup_file_path, new_lines)
 
 
 def file_lines_split(file_path):
@@ -85,7 +87,7 @@ def generate_line(result):
     dir = name.P_dir if "p" in node_id else name.D_dir
     file = node_name+".md"
     github_url = "/".join([git_url_nofile(), dir, file])
-    return result.group(1)+"click "+node_id+" \""+github_url+"\""
+    return f"{result.group(1)}click {node_id} \"{github_url}\""
 
 # https://github.com/アカウント名/リポジトリ名.git
 # https://github.com/lop9940/link_fix/blob/feature/action_yaml_add_test/README.md
