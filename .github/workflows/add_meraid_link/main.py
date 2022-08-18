@@ -7,6 +7,23 @@ import name
 import search_target
 
 
+def main():
+    header, mermeid, footer = file_lines_split(
+        name.P_dir+"/"+name.target_file_name, search_target.first_target, search_target.last_target)
+
+    new_mermaid = generate_mermaid_lines(mermeid)
+
+    new_lines = header+new_mermaid+footer
+
+    shutil.rmtree(name.backup_dir)
+    os.mkdir(name.backup_dir)
+    shutil.copy(name.P_dir+"/"+name.target_file_name,
+                name.backup_dir+"/"+name.target_file_name)
+
+    with open(name.P_dir+"/"+name.target_file_name, "w") as file:
+        file.write("\n".join(new_lines))
+
+
 def file_lines_split(file_path, first_index_target, last_index_target):
 
     with open(file_path, 'r') as file:
@@ -79,17 +96,5 @@ def git_url_nofile():
     return "/".join([repository, "blob", branch])
 
 
-header, mermeid, footer = file_lines_split(
-    name.P_dir+"/"+name.target_file_name, search_target.first_target, search_target.last_target)
-
-new_mermaid = generate_mermaid_lines(mermeid)
-
-new_lines = header+new_mermaid+footer
-
-shutil.rmtree(name.backup_dir)
-os.mkdir(name.backup_dir)
-shutil.copy(name.P_dir+"/"+name.target_file_name,
-            name.backup_dir+"/"+name.target_file_name)
-
-with open(name.P_dir+"/"+name.target_file_name, "w") as file:
-    file.write("\n".join(new_lines))
+if __name__ == "__main__":
+    main()
