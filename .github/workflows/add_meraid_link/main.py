@@ -86,8 +86,6 @@ new_mermaid = generate_mermaid_lines(mermeid)
 
 new_lines = header+new_mermaid+footer
 
-print(new_lines)
-
 shutil.rmtree(name.backup_dir)
 os.mkdir(name.backup_dir)
 shutil.copy(name.P_dir+"/"+name.target_file_name,
