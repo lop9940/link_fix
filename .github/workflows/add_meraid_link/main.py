@@ -12,13 +12,11 @@ def main():
     target_file_path = f"{name.P_dir}/{name.target_file_name}"
     backup_file_path = f"{name.backup_dir}/{name.target_file_name}"
 
-    print(target_file_path)
-
     header, mermeid, footer = file_lines_split(target_file_path)
 
     new_lines = generate_markdown_lines(header, mermeid, footer)
 
-    # file_updata(target_file_path, backup_file_path, new_lines)
+    file_update(target_file_path, backup_file_path, new_lines)
 
 
 def file_lines_split(file_path):
@@ -99,7 +97,7 @@ def git_url_nofile():
     return "/".join([repository, "blob", branch])
 
 
-def file_updata(target_file_path, backup_file_path, new_lines):
+def file_update(target_file_path, backup_file_path, new_lines):
     shutil.rmtree(name.backup_dir)
     os.mkdir(name.backup_dir)
     shutil.copy(target_file_path, backup_file_path)
