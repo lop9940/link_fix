@@ -7,13 +7,15 @@ from update_file import update_file
 
 def main():
 
-    process_path=pathlib.Path("process")
-    target_files_path=[str(p) for p in process_path.iterdir() if p.is_file()] 
+    process_dir_Path = pathlib.Path("process")
+    target_files_Path = process_dir_Path.iterdir()
+    backup_dir_path = str(pathlib.Path("backup"))
 
-    for path in target_files_path:
-        # backup_path = f"{name.backup_dir}/{file_name}"
+    for file_Path in target_files_Path:
+        if not file_Path.is_file():
+            continue
 
-        header, mermeid, footer = split_file(path)
+        header, mermeid, footer = split_file(str(file_Path))
 
         new_lines = update_markdown(header, mermeid, footer)
 
