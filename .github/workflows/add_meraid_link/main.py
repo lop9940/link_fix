@@ -14,6 +14,8 @@ def main():
 
         new_lines = update_markdown(header, mermeid, footer)
 
+        print(new_lines)
+
         update_file(file_path, backup_path, new_lines)
 
 
