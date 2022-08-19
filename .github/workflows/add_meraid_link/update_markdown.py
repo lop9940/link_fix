@@ -1,6 +1,5 @@
 import sys
 import re
-from unittest import result
 import re_pattern
 import name
 
@@ -20,9 +19,9 @@ def generate_mermaid(lines):
 
         if (P_result is None) & (D_result is None):
             continue
-        result = P_result if P_result is not None else D_result
+        re_result = P_result if P_result is not None else D_result
 
-        generated_lines.append(generate_link_line(result.groupdict()))
+        generated_lines.append(generate_link_line(re_result.groupdict()))
 
     return generated_lines
 
