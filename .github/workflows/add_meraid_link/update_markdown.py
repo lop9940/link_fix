@@ -1,7 +1,7 @@
-import sys
 import re
 import re_pattern
 import name
+import sys_argv
 
 
 def update_markdown(header, mermeid, footer):
@@ -46,15 +46,16 @@ def generate_link_line(result_dict):
     sample:https://github.com/lop9940/link_fix/blob/feature/action_yaml_add_test/README.md
     """
 
-    github_url = generate_link(result_dict['node_id'],result_dict['node_name'])
+    github_url = generate_link(
+        result_dict['node_id'], result_dict['node_name'])
     return f"{result_dict['space']}click {result_dict['node_id']} \"{github_url}\""
 
 
 def generate_link(node_id, node_name):
 
-    repository = sys.argv[1]  # ${{ github.repository }}
+    repository = sys_argv.repository_name
     blob = name.blob
-    branch = sys.argv[2]  # ${{ github.ref_name }}
+    branch = sys_argv.branch_name
     dir = name.P_dir if "p" in node_id else name.D_dir
     file = node_name+".md"
     return "/".join([repository, blob, branch, dir, file])
