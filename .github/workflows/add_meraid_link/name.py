@@ -1,4 +1,6 @@
-target_file_name = "P001_test.md"
+target_file = "P001_test.md"
 backup_dir = "backup"
 P_dir="process"
 D_dir="document"
+target_file_path = f"{P_dir}/{target_file}"
+backup_file_path = f"{backup_dir}/{target_file}"

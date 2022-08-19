@@ -2,33 +2,29 @@ import os
 import re
 import shutil
 import sys
-from turtle import back
 import re_pattern
 import name
 import search_target
 
 
 def main():
-    target_file_path = f"{name.P_dir}/{name.target_file_name}"
-    backup_file_path = f"{name.backup_dir}/{name.target_file_name}"
+    header, mermeid, footer = split_file_lines(name.target_file_path)
 
-    header, mermeid, footer = file_lines_split(target_file_path)
+    new_lines = update_markdown_lines(header, mermeid, footer)
 
-    new_lines = generate_markdown_lines(header, mermeid, footer)
-
-    file_update(target_file_path, backup_file_path, new_lines)
+    update_file(name.target_file_path, name.backup_file_path, new_lines)
 
 
-def file_lines_split(file_path):
+def split_file_lines(file_path):
 
     with open(file_path, 'r') as file:
         lines = file.readlines()
 
     lines_replace = [line.replace('\n', '') for line in lines]
-    mermaid_first_index = index_search(
+    mermaid_first_index = search_index(
         lines_replace, search_target.first_target)
     remaining_lines = lines_replace[mermaid_first_index:]
-    mermaid_last_lindex = index_search(
+    mermaid_last_lindex = search_index(
         lines_replace, search_target.last_target)
 
     header_lines = lines_replace[:mermaid_first_index-1]
@@ -38,39 +34,40 @@ def file_lines_split(file_path):
     return (header_lines, mermeid_lines, footer_lines)
 
 
-def index_search(list, target, default=False):
+def search_index(list, target, default=False):
     return list.index(target) if target in list else default
 
 
-def generate_markdown_lines(header, mermeid, footer):
+def update_markdown_lines(header, mermeid, footer):
     return header+generate_mermaid_lines(mermeid)+footer
 
 
 def generate_mermaid_lines(lines):
-    P_pattern_object, D_pattern_object = re_pattern_object()
-    generate_lines = []
+    P_pattern_object, D_pattern_object = generate_re_pattern_object()
+    generated_lines = []
 
     for line in lines:
-        generate_lines.append(line)
+        generated_lines.append(line)
         P_result = P_pattern_object.search(repr(line))
         D_result = D_pattern_object.search(repr(line))
 
         if (P_result is None) & (D_result is None):
             continue
         if P_result is not None:
-            add_line = generate_line(P_result)
+            add_line = generate_link_line(P_result)
         elif D_result is not None:
-            add_line = generate_line(D_result)
+            add_line = generate_link_line(D_result)
 
-        generate_lines.append(add_line)
-    return generate_lines
+        generated_lines.append(add_line)
+
+    return generated_lines
 
 # 下記のように|で繋ぐ手もあったがD側がgroupでの抽出（index）が少々複雑なるため、PとDを分けた
 # ※P側は「P**」がgroup[2]に表示されるがD側は「D**」がgroup[9]に表示され、indexが分かれる
 # pattern_object=re.compile(P_pattern+"|"+D_pattern)
 
 
-def re_pattern_object():
+def generate_re_pattern_object():
     P = re.compile(re_pattern.P_pattern)
     D = re.compile(re_pattern.D_pattern)
     return (P, D)
@@ -78,7 +75,7 @@ def re_pattern_object():
 # add line [click node_name "URL"]
 
 
-def generate_line(result):
+def generate_link_line(result):
 
     node_id = result.group(2)
     node_name = result.group(4)
@@ -97,7 +94,7 @@ def git_url_nofile():
     return "/".join([repository, "blob", branch])
 
 
-def file_update(target_file_path, backup_file_path, new_lines):
+def update_file(target_file_path, backup_file_path, new_lines):
     shutil.rmtree(name.backup_dir)
     os.mkdir(name.backup_dir)
     shutil.copy(target_file_path, backup_file_path)
