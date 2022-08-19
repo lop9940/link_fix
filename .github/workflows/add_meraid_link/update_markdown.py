@@ -1,7 +1,9 @@
 import sys
 import re
+from unittest import result
 import re_pattern
 import name
+
 
 def update_markdown(header, mermeid, footer):
     return header+generate_mermaid(mermeid)+footer
@@ -18,14 +20,12 @@ def generate_mermaid(lines):
 
         if (P_result is None) & (D_result is None):
             continue
-        if P_result is not None:
-            add_line = generate_link_line(P_result)
-        elif D_result is not None:
-            add_line = generate_link_line(D_result)
+        result = P_result if P_result is not None else D_result
 
-        generated_lines.append(add_line)
+        generated_lines.append(generate_link_line(result.groupdict))
 
     return generated_lines
+
 
 def generate_re_pattern_object():
     """
@@ -41,22 +41,21 @@ def generate_re_pattern_object():
 # add line [click node_name "URL"]
 
 
-def generate_link_line(result):
+def generate_link_line(result_dict):
     """
     https://github.com/アカウント名/リポジトリ名/blob/ブランチ名/リポジトリからの相対パス.git
     sample:https://github.com/lop9940/link_fix/blob/feature/action_yaml_add_test/README.md
     """
 
-    node_id = result.group(2)
-    node_name = result.group(4)
+    github_url = generate_link(result_dict["node_id"],result_dict["node_name"])
+    return f"{result_dict['space']}click {result_dict['node_id']} \"{github_url}\""
+
+
+def generate_link(node_id, node_name):
+
+    repository = sys.argv[1]  # ${{ github.repository }}
+    blob = name.blob
+    branch = sys.argv[2]  # ${{ github.ref_name }}
     dir = name.P_dir if "p" in node_id else name.D_dir
     file = node_name+".md"
-    github_url = "/".join([git_url_nofile(), dir, file])
-    return f"{result.group(1)}click {node_id} \"{github_url}\""
-
-
-def git_url_nofile():
-    repository = sys.argv[1]  # ${{ github.repository }}
-    branch = sys.argv[2]  # ${{ github.ref_name }}
-    return "/".join([repository, "blob", branch])
-
+    return "/".join([repository, blob, branch, dir, file])
