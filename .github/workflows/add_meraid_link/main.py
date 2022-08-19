@@ -5,11 +5,16 @@ from update_file import update_file
 
 
 def main():
-    header, mermeid, footer = split_file(name.target_file_path)
 
-    new_lines = update_markdown(header, mermeid, footer)
+    for file_name in name.target_files:
+        file_path = f"{name.P_dir}/{file_name}"
+        backup_path = f"{name.backup_dir}/{file_name}"
 
-    update_file(name.target_file_path, name.backup_file_path, new_lines)
+        header, mermeid, footer = split_file(file_path)
+
+        new_lines = update_markdown(header, mermeid, footer)
+
+        update_file(file_path, backup_path, new_lines)
 
 
 if __name__ == "__main__":
