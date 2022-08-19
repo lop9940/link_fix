@@ -1,7 +1,5 @@
-target_file = "P001_test.md"
+target_files = ["P001_test.md","P002_pTest1.md"]
 backup_dir = "backup"
 P_dir = "process"
 D_dir = "document"
-target_file_path = f"{P_dir}/{target_file}"
-backup_file_path = f"{backup_dir}/{target_file}"
 blob = "blob"
