@@ -5,10 +5,8 @@ on:
     branches:
       - "feature/**"
 
-  workflow_dispatch:
-
 jobs:
-  py-test:    
+  python-script(add_mermaid_link):    
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
