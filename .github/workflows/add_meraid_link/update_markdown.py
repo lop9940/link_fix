@@ -22,7 +22,8 @@ def generate_mermaid(lines):
             continue
         result = P_result if P_result is not None else D_result
 
-        print(result.groupdict)
+        print(result.groupdict["node_id"])
+        print("end")
 
         generated_lines.append(generate_link_line(result.groupdict))
 
