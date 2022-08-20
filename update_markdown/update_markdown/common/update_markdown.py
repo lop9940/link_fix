@@ -1,7 +1,7 @@
 import re
-import re_pattern
-import sys_argv
-import name
+from common import re_pattern
+from common import sys_argv
+from common import name
 
 
 def add_link(header, mermeid, footer):
