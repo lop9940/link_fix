@@ -1,7 +1,7 @@
 import os
 import shutil
 import pathlib
-import name
+from common import name
 
 def reset_dir(dir_path):
     shutil.rmtree(dir_path)

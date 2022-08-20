@@ -1,7 +1,7 @@
 from common import file_operation
-from .common import split_file
-from .common import update_markdown
-from .common import update_file
+from common import split_file
+from common import update_markdown
+from common import update_file
 
 
 def main():
