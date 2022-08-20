@@ -17,8 +17,8 @@ jobs:
           architecture: 'x64'
       - name: Run Python
         run: |
-          cd .github/workflows/add_meraid_link
-          python main.py "${{ github.repository }}" "${{ github.ref_name }}"
+          cd update_markdown/update_markdown
+          python update_markdown.py "${{ github.repository }}" "${{ github.ref_name }}"
       # - name: Run Git
       #   run: |
       #     git config --global user.name "lop9940"

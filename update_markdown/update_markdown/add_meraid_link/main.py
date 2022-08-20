@@ -1,7 +1,6 @@
 import sys
-sys.path.append(".")
 print(sys.path)
-from ..common import file_operation
+from . import file_operation
 from ..common import split_file
 from ..common import update_markdown
 from ..common import update_file
