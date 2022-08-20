@@ -1,5 +1,5 @@
 import sys
-sys.path.append(".")
+sys.path.append("add_meraid_link")
 from ..common import file_operation
 from ..common import split_file
 from ..common import update_markdown
