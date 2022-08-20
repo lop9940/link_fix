@@ -18,7 +18,7 @@ jobs:
       - name: Run Python
         run: |
           cd .github/workflows/add_meraid_link
-          python .github/workflows/add_meraid_link/main.py "${{ github.repository }}" "${{ github.ref_name }}"
+          python main.py "${{ github.repository }}" "${{ github.ref_name }}"
       # - name: Run Git
       #   run: |
       #     git config --global user.name "lop9940"
