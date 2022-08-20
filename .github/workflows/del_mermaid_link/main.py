@@ -18,7 +18,9 @@ def main():
 
         header, mermeid, footer = split_file.split_file(file_path)
 
-        new_lines = update_markdown.add_link(header, mermeid, footer)
+        new_lines = update_markdown.del_link(header, mermeid, footer)
+
+        print(new_lines)
 
         update_file(new_lines, file_path, backup_dir_path)
 
