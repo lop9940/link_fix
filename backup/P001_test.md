@@ -27,15 +27,14 @@
 
 - D04_dTest4
 
-## 1.3. PFD
 ```mermaid
 flowchart TD
     p01([P003_pTest3])
-    click p01 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/process/P002_pTest1.md"
+    click p01 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/process/P003_pTest3.md"
     p02([P004_pTest2])
     click p02 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/process/P004_pTest2.md"
     p03([P002_pTest1])
-    click p03 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/process/P003_pTest3.md"
+    click p03 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/process/P002_pTest1.md"
     p04([P005_pTest4])
     click p04 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/process/P005_pTest4.md"
 

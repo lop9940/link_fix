@@ -26,31 +26,41 @@
 ### 1.2.3. 更新青果物
 
 - D04_dTest4
-
 ```mermaid
 flowchart TD
     p01([P003_pTest3])
+    # このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
     click p01 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/process/P003_pTest3.md"
     p02([P004_pTest2])
+    # このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
     click p02 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/process/P004_pTest2.md"
     p03([P002_pTest1])
+    # このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
     click p03 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/process/P002_pTest1.md"
     p04([P005_pTest4])
+    # このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
     click p04 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/process/P005_pTest4.md"
 
     d01[/D001_dTest1/]
+    # このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
     click d01 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/document/D001_dTest1.md"
     d02[/D002_dTest2/]
+    # このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
     click d02 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/document/D002_dTest2.md"
     d03[/D003_dTest3/]
+    # このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
     click d03 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/document/D003_dTest3.md"
     d04[/D004_dTest4/]
+    # このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
     click d04 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/document/D004_dTest4.md"
     d05[/D005_dTest5/]
+    # このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
     click d05 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/document/D005_dTest5.md"
     d06[/D006_dTest6/]
+    # このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
     click d06 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/document/D006_dTest6.md"
     d07[/D007_dTest7/]
+    # このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
     click d07 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/document/D007_dTest7.md"
 
     d01-->p01
