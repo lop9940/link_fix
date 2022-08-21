@@ -4,15 +4,11 @@ from common import sys_argv
 from common import name
 
 
-def add_link(header, mermeid, footer):
-    return header+generate_link_mermaid(mermeid)+footer
+def correction_link(header, mermeid, footer):
+    return header+generate_mermaid(mermeid)+footer
 
 
-def del_link(header, mermeid, footer):
-    return header+generate_nolink_mermaid(mermeid)+footer
-
-
-def generate_link_mermaid(lines):
+def generate_mermaid(lines):
     # P_node, D_node, P_link, D_link
     pattern_objects = generate_re_pattern_object_dict()
     generated_lines = []
@@ -37,28 +33,10 @@ def generate_link_mermaid(lines):
     return generated_lines
 
 
-def generate_nolink_mermaid(lines):
-    P_node, D_node, P_link, D_link = generate_re_pattern_object()
-    generated_lines = []
-
-    for line in lines:
-        P_result = P_pattern_object.search(repr(line))
-        D_result = D_pattern_object.search(repr(line))
-
-        if (P_result is not None) or (D_result is not None):
-            continue
-        generated_lines.append(line)
-
-    return generated_lines
-
-
 def generate_re_pattern_object_dict():
-    """
-    下記のように|で繋ぐ手もあったがD側がgroupでの抽出（index）が少々複雑なるため、PとDを分けた
-    ※P側は「P**」がgroup[2]に表示されるがD側は「D**」がgroup[9]に表示され、indexが分かれる
-
-    pattern_object=re.compile(P_pattern+"|"+D_pattern)
-    """
+    # 下記のように|で繋ぐ手もあったがD側がgroupでの抽出（index）が少々複雑なるため、PとDを分けた
+    # ※P側は「P**」がgroup[2]に表示されるがD側は「D**」がgroup[9]に表示され、indexが分かれる
+    # pattern_object=re.compile(P_pattern+"|"+D_pattern)
 
     return ({"P_node": re.compile(re_pattern.P_node_id),
              "D_node": re.compile(re_pattern.D_node_id),
@@ -67,20 +45,20 @@ def generate_re_pattern_object_dict():
 
 
 def generate_line(result_dict):
-    """
-    generate line [click node_name "URL"]
-    """
+
+    # generate line [click node_name "URL"]
 
     github_url = generate_link(
         result_dict['node_id'], result_dict['node_name'])
-    return f"{result_dict['space']}click {result_dict['node_id']} \"{github_url}\""
+    comment_line=f"{result_dict['space']}{name.link_comment}"
+    link_line=f"{result_dict['space']}click {result_dict['node_id']} \"{github_url}\""
+    return f"{comment_line}\n{link_line}"
 
 
 def generate_link(node_id, node_name):
-    """
-    https://github.com/アカウント名/リポジトリ名/blob/ブランチ名/リポジトリからの相対パス.git
-    sample:https://github.com/lop9940/link_fix/blob/feature/action_yaml_add_test/README.md
-    """
+
+    # https://github.com/アカウント名/リポジトリ名/blob/ブランチ名/リポジトリからの相対パス.git
+    # sample:https://github.com/lop9940/link_fix/blob/feature/action_yaml_add_test/README.md
 
     repository = sys_argv.repository_name
     blob = name.blob
