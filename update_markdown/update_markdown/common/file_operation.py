@@ -13,7 +13,7 @@ def process_files_Path():
     process_dir_Path = pathlib.Path(name.P_dir)
     print("process_dir_Path:")
     pprint(type(process_dir_Path))
-    pprint(process_dir_Path.iterdir)
+    pprint(process_dir_Path.resolve())
     return process_dir_Path.iterdir()
 
 def backup_dir_Path():
