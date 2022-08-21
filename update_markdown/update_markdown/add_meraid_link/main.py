@@ -1,9 +1,9 @@
-import sys
-print(sys.path)
+# こちら使用不要、update_markdown.pyに移行
+
 from . import file_operation
-from ..common import split_file
-from ..common import update_markdown
-from ..common import update_file
+from . import split_file
+from . import update_markdown
+from . import update_file
 
 
 def main():

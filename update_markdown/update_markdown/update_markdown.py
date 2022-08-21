@@ -21,6 +21,8 @@ def main():
 
         new_lines = update_markdown.add_link(header, mermeid, footer)
 
+        print(new_lines, file_path, backup_dir_path)
+
         update_file(new_lines, file_path, backup_dir_path)
 
 
