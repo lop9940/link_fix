@@ -28,21 +28,31 @@
 - D04_dTest4
 
 ## 1.3. PFD
-
 ```mermaid
 flowchart TD
     p01([P006_pTest1])
+    click p01 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/process/P006_pTest1.md"
     p02([P007_pTest2])
+    click p02 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/process/P007_pTest2.md"
     p03([P008_pTest3])
+    click p03 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/process/P008_pTest3.md"
     p04([P009_pTest4])
+    click p04 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/process/P009_pTest4.md"
 
     d01[/D006_dTest1/]
+    click d01 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/document/D006_dTest1.md"
     d02[/D008_dTest2/]
+    click d02 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/document/D008_dTest2.md"
     d03[/D003_dTest3/]
+    click d03 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/document/D003_dTest3.md"
     d04[/D009_dTest4/]
+    click d04 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/document/D009_dTest4.md"
     d05[/D010_dTest5/]
+    click d05 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/document/D010_dTest5.md"
     d06[/D011_dTest6/]
+    click d06 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/document/D011_dTest6.md"
     d07[/D013_dTest7/]
+    click d07 "lop9940/link_fix/blob/feature/del-mermaid-link-when-pulling/document/D013_dTest7.md"
 
     d01-->p01
     d01-->p02
