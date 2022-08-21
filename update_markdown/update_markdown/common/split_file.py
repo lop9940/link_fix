@@ -1,4 +1,4 @@
-import search_target
+from common import search_target
 
 
 def split_file(file_path):
