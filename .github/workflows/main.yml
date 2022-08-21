@@ -17,8 +17,7 @@ jobs:
           architecture: 'x64'
       - name: Run Python
         run: |
-          cd update_markdown/update_markdown
-          python update_markdown.py "${{ github.repository }}" "${{ github.ref_name }}"
+          python update_markdown/update_markdown/update_markdown.py "${{ github.repository }}" "${{ github.ref_name }}"
       # - name: Run Git
       #   run: |
       #     git config --global user.name "lop9940"
