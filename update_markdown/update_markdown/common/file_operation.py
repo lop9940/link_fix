@@ -1,4 +1,5 @@
 import os
+from pprint import pprint
 import shutil
 import pathlib
 from common import name
@@ -11,7 +12,7 @@ def process_files_Path():
 
     process_dir_Path = pathlib.Path(name.P_dir)
     print("process_dir_Path:")
-    print(process_dir_Path)
+    pprint(process_dir_Path)
     return process_dir_Path.iterdir()
 
 def backup_dir_Path():
