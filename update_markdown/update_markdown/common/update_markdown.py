@@ -14,14 +14,15 @@ def generate_mermaid(lines):
     generated_lines = []
 
     for line in lines:
-        re_results = {pattern_name: pattern_object.search(repr(line))
+        re_results = {pattern_name: pattern_object.fullmatch(repr(line))
                       for pattern_name, pattern_object in pattern_objects.items()}
 
         # node idの行の場合、その行を追加し、合わせてリンクも挿入
         # linkの行の場合、その行は追加しない
         # どちらの行でもない場合、その行のみを追加
 
-        if (re_results["P_link"] is not None) or (re_results["D_link"] is not None):
+        if ((re_results["P_link"] is not None) or (re_results["D_link"] is not None)
+            or (re_results["link_comment"] is not None)):
             continue
         generated_lines.append(line)
         if (re_results["P_node"] is None) and (re_results["D_node"] is None):
@@ -41,7 +42,8 @@ def generate_re_pattern_object_dict():
     return ({"P_node": re.compile(re_pattern.P_node_id),
              "D_node": re.compile(re_pattern.D_node_id),
              "P_link": re.compile(re_pattern.P_link),
-             "D_link": re.compile(re_pattern.D_link)})
+             "D_link": re.compile(re_pattern.D_link),
+             "link_comment": re.compile(re_pattern.link_comment)})
 
 
 def generate_line(result_dict):
@@ -50,8 +52,8 @@ def generate_line(result_dict):
 
     github_url = generate_link(
         result_dict['node_id'], result_dict['node_name'])
-    comment_line=f"{result_dict['space']}{name.link_comment}"
-    link_line=f"{result_dict['space']}click {result_dict['node_id']} \"{github_url}\""
+    comment_line = f"{result_dict['space']}{name.link_comment}"
+    link_line = f"{result_dict['space']}click {result_dict['node_id']} \"{github_url}\""
     return f"{comment_line}\n{link_line}"
 
 
