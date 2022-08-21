@@ -16,5 +16,5 @@ def process_files_Path():
 def backup_dir_Path():
 
     print("backup_dir_Path:")
-    print(pathlib.Path(name.backup_dir).resolve)
+    print(pathlib.Path(name.backup_dir).resolve())
     return pathlib.Path(name.backup_dir)
