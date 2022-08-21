@@ -14,7 +14,7 @@ def generate_mermaid(lines):
     generated_lines = []
 
     for line in lines:
-        re_results = {pattern_name: pattern_object.fullmatch(repr(line))
+        re_results = {pattern_name: pattern_object.search(repr(line))
                       for pattern_name, pattern_object in pattern_objects.items()}
 
         # node idの行の場合、その行を追加し、合わせてリンクも挿入
@@ -52,7 +52,7 @@ def generate_line(result_dict):
 
     github_url = generate_link(
         result_dict['node_id'], result_dict['node_name'])
-    comment_line = f"{result_dict['space']}{name.link_comment}"
+    comment_line = f"{result_dict['space']}# {name.link_comment}"
     link_line = f"{result_dict['space']}click {result_dict['node_id']} \"{github_url}\""
     return f"{comment_line}\n{link_line}"
 
