@@ -13,17 +13,24 @@ def del_link(header, mermeid, footer):
 
 
 def generate_link_mermaid(lines):
-    P_pattern_object, D_pattern_object = generate_re_node_id_object()
+    # P_node, D_node, P_link, D_link
+    pattern_objects = generate_re_pattern_object_dict()
     generated_lines = []
 
     for line in lines:
-        generated_lines.append(line)
-        P_result = P_pattern_object.search(repr(line))
-        D_result = D_pattern_object.search(repr(line))
+        re_results = {pattern_name: pattern_object.search(repr(line))
+                      for pattern_name, pattern_object in pattern_objects.items()}
 
-        if (P_result is None) & (D_result is None):
+        # node idの行の場合、その行を追加し、合わせてリンクも挿入
+        # linkの行の場合、その行は追加しない
+        # どちらの行でもない場合、その行のみを追加
+
+        if (re_results["P_link"] is not None) or (re_results["D_link"] is not None):
             continue
-        re_result = P_result if P_result is not None else D_result
+        generated_lines.append(line)
+        if (re_results["P_node"] is None) and (re_results["D_node"] is None):
+            continue
+        re_result = re_results["P_node"] if re_results["P_node"] is not None else re_results["D_node"]
 
         generated_lines.append(generate_line(re_result.groupdict()))
 
@@ -31,7 +38,7 @@ def generate_link_mermaid(lines):
 
 
 def generate_nolink_mermaid(lines):
-    P_pattern_object, D_pattern_object = generate_re_link_object()
+    P_node, D_node, P_link, D_link = generate_re_pattern_object()
     generated_lines = []
 
     for line in lines:
@@ -45,22 +52,18 @@ def generate_nolink_mermaid(lines):
     return generated_lines
 
 
-def generate_re_node_id_object():
+def generate_re_pattern_object_dict():
     """
     下記のように|で繋ぐ手もあったがD側がgroupでの抽出（index）が少々複雑なるため、PとDを分けた
     ※P側は「P**」がgroup[2]に表示されるがD側は「D**」がgroup[9]に表示され、indexが分かれる
 
     pattern_object=re.compile(P_pattern+"|"+D_pattern)
     """
-    P = re.compile(re_pattern.P_node_id)
-    D = re.compile(re_pattern.D_node_id)
-    return (P, D)
 
-
-def generate_re_link_object():
-    P = re.compile(re_pattern.P_link)
-    D = re.compile(re_pattern.D_link)
-    return (P, D)
+    return ({"P_node": re.compile(re_pattern.P_node_id),
+             "D_node": re.compile(re_pattern.D_node_id),
+             "P_link": re.compile(re_pattern.P_link),
+             "D_link": re.compile(re_pattern.D_link)})
 
 
 def generate_line(result_dict):
