@@ -18,10 +18,10 @@ jobs:
       - name: Run Python
         run: |
           python update_markdown/update_markdown/update_markdown.py "${{ github.repository }}" "${{ github.ref_name }}"
-      - name: Run Git
-        run: |
-          git config --global user.name "lop9940"
-          git config --global user.email "qaqclop9940@gmail.com"
-          git add .
-          git commit -m "Update by GitHub Action"
-          git push
+      # - name: Run Git
+      #   run: |
+      #     git config --global user.name "lop9940"
+      #     git config --global user.email "qaqclop9940@gmail.com"
+      #     git add .
+      #     git commit -m "Update by GitHub Action"
+      #     git push
