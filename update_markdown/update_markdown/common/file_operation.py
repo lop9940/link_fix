@@ -11,12 +11,10 @@ def reset_dir(dir_path):
 def process_files_Path():
 
     process_dir_Path = pathlib.Path(name.P_dir)
-    print("process_dir_Path:")
-    pprint(list(process_dir_Path.iterdir()))
     return process_dir_Path.iterdir()
 
 def backup_dir_Path():
 
     print("backup_dir_Path:")
-    print(pathlib.Path(name.backup_dir))
+    print(pathlib.Path(name.backup_dir).resolve)
     return pathlib.Path(name.backup_dir)
