@@ -7,11 +7,11 @@ from common import update_file
 def main():
 
     target_files_Path = file_operation.process_files_Path()
-    print(target_files_Path)
+    print("target_files_Path:"+target_files_Path)
     backup_dir_Path=file_operation.backup_dir_Path()
-    print(backup_dir_Path)
+    print("backup_dir_Path:"+backup_dir_Path)
     backup_dir_path = str(backup_dir_Path)
-    print(backup_dir_path)
+    print("backup_dir_path:"+backup_dir_path)
 
     file_operation.reset_dir(backup_dir_path)
 
