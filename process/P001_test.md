@@ -25,38 +25,38 @@
 flowchart TD
     p01([P003_pTest3])
     %% このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
-    click p01 "lop9940/link_fix/blob/feature/markdown-link-check-add/process/P003_pTest3.md"
+    click p01 "lop9940/link_fix/blob/feature/markdown-link-check-add/process/P003_pTest3.md" %% url check NG
     p02([P004_pTest2])
     %% このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
-    click p02 "lop9940/link_fix/blob/feature/markdown-link-check-add/process/P004_pTest2.md"
+    click p02 "lop9940/link_fix/blob/feature/markdown-link-check-add/process/P004_pTest2.md" %% url check NG
     p03([P002_pTest1])
     %% このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
-    click p03 "lop9940/link_fix/blob/feature/markdown-link-check-add/process/P002_pTest1.md"
+    click p03 "lop9940/link_fix/blob/feature/markdown-link-check-add/process/P002_pTest1.md" %% url check OK
     p04([P005_pTest4])
     %% このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
-    click p04 "lop9940/link_fix/blob/feature/markdown-link-check-add/process/P005_pTest4.md"
+    click p04 "lop9940/link_fix/blob/feature/markdown-link-check-add/process/P005_pTest4.md" %% url check NG
 
     d01[/D001_dTest1/]
     %% このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
-    click d01 "lop9940/link_fix/blob/feature/markdown-link-check-add/document/D001_dTest1.md"
+    click d01 "lop9940/link_fix/blob/feature/markdown-link-check-add/document/D001_dTest1.md" %% url check OK
     d02[/D002_dTest2/]
     %% このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
-    click d02 "lop9940/link_fix/blob/feature/markdown-link-check-add/document/D002_dTest2.md"
+    click d02 "lop9940/link_fix/blob/feature/markdown-link-check-add/document/D002_dTest2.md" %% url check NG
     d03[/D003_dTest3/]
     %% このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
-    click d03 "lop9940/link_fix/blob/feature/markdown-link-check-add/document/D003_dTest3.md"
+    click d03 "lop9940/link_fix/blob/feature/markdown-link-check-add/document/D003_dTest3.md" %% url check NG
     d04[/D004_dTest4/]
     %% このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
-    click d04 "lop9940/link_fix/blob/feature/markdown-link-check-add/document/D004_dTest4.md"
+    click d04 "lop9940/link_fix/blob/feature/markdown-link-check-add/document/D004_dTest4.md" %% url check NG
     d05[/D005_dTest5/]
     %% このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
-    click d05 "lop9940/link_fix/blob/feature/markdown-link-check-add/document/D005_dTest5.md"
+    click d05 "lop9940/link_fix/blob/feature/markdown-link-check-add/document/D005_dTest5.md" %% url check NG
     d06[/D006_dTest6/]
     %% このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
-    click d06 "lop9940/link_fix/blob/feature/markdown-link-check-add/document/D006_dTest6.md"
+    click d06 "lop9940/link_fix/blob/feature/markdown-link-check-add/document/D006_dTest6.md" %% url check NG
     d07[/D007_dTest7/]
     %% このリンクはGithub actionsでの自動生成です。ノード名が変更になっても修正不要です。
-    click d07 "lop9940/link_fix/blob/feature/markdown-link-check-add/document/D007_dTest7.md"
+    click d07 "lop9940/link_fix/blob/feature/markdown-link-check-add/document/D007_dTest7.md" %% url check NG
 
     d01-->p01
     d01-->p02
