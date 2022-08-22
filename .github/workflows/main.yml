@@ -25,13 +25,13 @@ jobs:
           git add .
           git commit -m "Update by GitHub Action run:correction_mermaid_link.py"
           git push
-      - name: Run check_link.py
+      - name: Run check_mermaid_link.py
         run: |
-          python update_markdown/update_markdown/check_link.py
+          python update_markdown/update_markdown/check_mermaid_link.py
       - name: Run Git
         run: |
           git config --global user.name "lop9940"
           git config --global user.email "qaqclop9940@gmail.com"
           git add .
-          git commit -m "Update by GitHub Action run:check_link.py"
+          git commit -m "Update by GitHub Action run:check_mermaid_link.py"
           git push
