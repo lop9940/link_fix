@@ -28,7 +28,7 @@ def lines_check_link(lines):
         add_comment = name.url_check_comment_ok if checkURL(parse.urljoin(
             "https://github.com/", result_dict["url"])) else name.url_check_comment_ng
 
-        generated_lines.append(f"{line} # {add_comment}")
+        generated_lines.append(f"{line} %% {add_comment}")
 
     return generated_lines
 
@@ -56,7 +56,7 @@ def main():
 
         file_path = str(file_Path)
 
-        lines = split_file.file_to_lines(file_path)
+        lines = split_file.replace_lines(split_file.file_to_lines(file_path))
 
         new_lines = lines_check_link(lines)
 
