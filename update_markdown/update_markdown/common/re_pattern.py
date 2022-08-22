@@ -1,5 +1,5 @@
 import re
-import name
+from common import name
 
 
 def all_re_patterns():
@@ -10,8 +10,16 @@ def all_re_patterns():
             "link_comment": name.link_comment}
 
 
+def correction_re_pattern_names():
+    return ["P_node_id", "D_node_id", "P_link", "D_link", "link_comment"]
+
+
 def check_re_pattern_names():
     return ["P_link", "D_link"]
+
+
+def correction_object_dict():
+    return (make_object_dict(check_re_pattern_names, all_re_patterns))
 
 
 def check_object_dict():

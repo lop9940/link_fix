@@ -8,7 +8,7 @@ from common import name
 
 def generate_mermaid(lines):
     # P_node, D_node, P_link, D_link
-    pattern_objects = generate_re_pattern_object_dict()
+    pattern_objects = re_pattern.correction_object_dict()
     generated_lines = []
 
     for line in lines:
@@ -20,7 +20,7 @@ def generate_mermaid(lines):
         # どちらの行でもない場合、その行のみを追加
 
         if ((re_results["P_link"] is not None) or (re_results["D_link"] is not None)
-            or (re_results["link_comment"] is not None)):
+                or (re_results["link_comment"] is not None)):
             continue
         generated_lines.append(line)
         if (re_results["P_node"] is None) and (re_results["D_node"] is None):
@@ -30,18 +30,6 @@ def generate_mermaid(lines):
         generated_lines.append(generate_line(re_result.groupdict()))
 
     return generated_lines
-
-
-def generate_re_pattern_object_dict():
-    # 下記のように|で繋ぐ手もあったがD側がgroupでの抽出（index）が少々複雑なるため、PとDを分けた
-    # ※P側は「P**」がgroup[2]に表示されるがD側は「D**」がgroup[9]に表示され、indexが分かれる
-    # pattern_object=re.compile(P_pattern+"|"+D_pattern)
-
-    return ({"P_node": re.compile(re_pattern.P_node_id),
-             "D_node": re.compile(re_pattern.D_node_id),
-             "P_link": re.compile(re_pattern.P_link),
-             "D_link": re.compile(re_pattern.D_link),
-             "link_comment": re.compile(re_pattern.link_comment)})
 
 
 def generate_line(result_dict):
@@ -71,7 +59,7 @@ def generate_link(node_id, node_name):
 def main():
 
     target_files_Path = file_operation.process_files_Path()
-    backup_dir_Path=file_operation.backup_dir_Path()
+    backup_dir_Path = file_operation.backup_dir_Path()
     backup_dir_path = str(backup_dir_Path)
 
     file_operation.reset_dir(backup_dir_path)
