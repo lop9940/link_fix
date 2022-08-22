@@ -7,31 +7,22 @@ on:
       - "master"
 
 jobs:
-  # update_markdown:    
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Setup Python
-  #       uses: actions/setup-python@v2
-  #       with:
-  #         python-version: '3.8'
-  #         architecture: 'x64'
-  #     - name: Run Python
-  #       run: |
-  #         python update_markdown/update_markdown/update_markdown.py "${{ github.repository }}" "${{ github.ref_name }}"
-  #     - name: Run Git
-  #       run: |
-  #         git config --global user.name "lop9940"
-  #         git config --global user.email "qaqclop9940@gmail.com"
-  #         git add .
-  #         git commit -m "Update by GitHub Action"
-  #         git push
-
-  markdown-link-check:
+  update_markdown:    
     runs-on: ubuntu-latest
-    # need: update_markdown
     steps:
-    - uses: actions/checkout@master
-    - uses: gaurav-nelson/github-action-markdown-link-check@v1
-      with:
-        config-file: 'markdown-link-check.json'
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+          architecture: 'x64'
+      - name: Run Python
+        run: |
+          python update_markdown/update_markdown/correction_mermaid_link.py "${{ github.repository }}" "${{ github.ref_name }}"
+      - name: Run Git
+        run: |
+          git config --global user.name "lop9940"
+          git config --global user.email "qaqclop9940@gmail.com"
+          git add .
+          git commit -m "Update by GitHub Action"
+          git push
