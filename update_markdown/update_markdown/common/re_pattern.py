@@ -1,5 +1,6 @@
 import re
-from common import name
+import name
+# from common import name
 
 
 def all_re_patterns():
@@ -19,11 +20,11 @@ def check_re_pattern_names():
 
 
 def correction_object_dict():
-    return (make_object_dict(check_re_pattern_names, all_re_patterns))
+    return (make_object_dict(correction_object_dict(), all_re_patterns()))
 
 
 def check_object_dict():
-    return (make_object_dict(check_re_pattern_names, all_re_patterns))
+    return (make_object_dict(check_re_pattern_names(), all_re_patterns()))
 
 
 def make_object_dict(re_pattern_names, re_patterns_dict):
