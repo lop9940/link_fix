@@ -52,7 +52,7 @@ def generate_line(result_dict):
 
     github_url = generate_link(
         result_dict['node_id'], result_dict['node_name'])
-    comment_line = f"{result_dict['space']}<!-- {name.link_comment} -->"
+    comment_line = f"{result_dict['space']}%% {name.link_comment}"
     link_line = f"{result_dict['space']}click {result_dict['node_id']} \"{github_url}\""
     return f"{comment_line}\n{link_line}"
 
