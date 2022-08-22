@@ -1,7 +1,6 @@
 import re
 from common import file_operation
 from common import split_file
-from common import correction_mermaid
 from common import re_pattern
 from common import sys_argv
 from common import name
