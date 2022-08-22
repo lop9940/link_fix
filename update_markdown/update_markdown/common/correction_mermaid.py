@@ -4,7 +4,7 @@ from common import sys_argv
 from common import name
 
 
-def correction_link(header, mermeid, footer):
+def correction_lines(header, mermeid, footer):
     return header+generate_mermaid(mermeid)+footer
 
 
