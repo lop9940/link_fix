@@ -9,7 +9,7 @@ from common import name
 
 def lines_check_link(lines):
     # P_link, D_link
-    pattern_objects = re_pattern.re_pattern_object_dict()
+    pattern_objects = re_pattern.check_object_dict()
     generated_lines = []
 
     for line in lines:
