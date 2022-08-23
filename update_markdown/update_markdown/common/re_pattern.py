@@ -1,6 +1,5 @@
 import re
-import name
-# from common import name
+from common import name
 
 
 def all_re_patterns():
