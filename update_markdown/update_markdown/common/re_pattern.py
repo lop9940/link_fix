@@ -19,7 +19,7 @@ def check_re_pattern_names():
 
 
 def correction_object_dict():
-    return (make_object_dict(correction_object_dict(), all_re_patterns()))
+    return (make_object_dict(correction_re_pattern_names(), all_re_patterns()))
 
 
 def check_object_dict():
