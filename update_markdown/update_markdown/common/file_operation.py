@@ -5,19 +5,18 @@ from common import name
 
 
 def reset_dir(dir_path):
-    
+
     shutil.rmtree(dir_path)
     os.mkdir(dir_path)
 
 
-
 def get_process_files_Path():
-    
+
     return pathlib.Path(name.P_dir).iterdir()
 
 
 def get_backup_dir_Path():
-    
+
     return pathlib.Path(name.backup_dir)
 
 

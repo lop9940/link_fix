@@ -1,4 +1,4 @@
-from common import search_target
+from common import name
 
 
 def split_file(file_path):
@@ -21,10 +21,10 @@ def replace_lines(lines):
 
 def split_lines(lines):
     mermaid_first_index = search_index(
-        lines, search_target.first_target)
+        lines, name.first_mermaid_target)
     remaining_lines = lines[mermaid_first_index:]
     mermaid_last_lindex = search_index(
-        lines, search_target.last_target)
+        lines, name.last_mermaid_target)
 
     header = lines[:mermaid_first_index]
     mermeid = remaining_lines[:mermaid_last_lindex]

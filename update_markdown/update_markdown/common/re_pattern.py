@@ -29,3 +29,8 @@ def check_object_dict():
 def make_object_dict(re_pattern_names, re_patterns_dict):
     return {pattern_name: re.compile(re_pattern) for pattern_name,
             re_pattern in re_patterns_dict.items() if pattern_name in re_pattern_names}
+
+
+def dict_search(pattern_objects_dict, line):
+    return {pattern_name: pattern_object.search(repr(line))
+            for pattern_name, pattern_object in pattern_objects_dict.items()}

@@ -1,4 +1,3 @@
-import re
 from common import file_operation
 from common import split_file
 from common import re_pattern
@@ -12,8 +11,7 @@ def generate_mermaid(lines):
     generated_lines = []
 
     for line in lines:
-        re_results = {pattern_name: pattern_object.search(repr(line))
-                      for pattern_name, pattern_object in pattern_objects.items()}
+        re_results = re_pattern.dict_search(pattern_objects, line)
 
         # node idの行の場合、その行を追加し、合わせてリンクも挿入
         # linkの行の場合、その行は追加しない
@@ -22,9 +20,12 @@ def generate_mermaid(lines):
         if ((re_results["P_link"] is not None) or (re_results["D_link"] is not None)
                 or (re_results["link_comment"] is not None)):
             continue
+
         generated_lines.append(line)
+
         if (re_results["P_node"] is None) and (re_results["D_node"] is None):
             continue
+
         re_result = re_results["P_node"] if re_results["P_node"] is not None else re_results["D_node"]
 
         generated_lines.append(generate_line(re_result.groupdict()))

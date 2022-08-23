@@ -11,8 +11,7 @@ def lines_check_link(lines):
     generated_lines = []
 
     for line in lines:
-        re_results = {pattern_name: pattern_object.search(repr(line))
-                      for pattern_name, pattern_object in pattern_objects.items()}
+        re_results = re_pattern.dict_search(pattern_objects, line)
 
         # linkの行の場合のみ、判定を実施し、末尾にコメントをつける
 
