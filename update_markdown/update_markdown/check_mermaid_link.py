@@ -1,6 +1,4 @@
-from urllib import parse
-import urllib.request
-import urllib.error
+from urllib import parse, request, error
 from common import file_operation
 from common import split_file
 from common import re_pattern
@@ -35,7 +33,7 @@ def lines_check_link(lines):
 
 def checkURL(url):
     try:
-        f = urllib.request.urlopen(url)
+        f = request.urlopen(url)
         f.close()
         return True
     except:
@@ -44,10 +42,8 @@ def checkURL(url):
 
 def main():
 
-    target_files_Path = file_operation.process_files_Path()
-    backup_dir_Path = file_operation.backup_dir_Path()
-    backup_dir_path = str(backup_dir_Path)
-
+    target_files_Path = file_operation.get_process_files_Path()
+    backup_dir_path = str(file_operation.get_backup_dir_Path())
     file_operation.reset_dir(backup_dir_path)
 
     for file_Path in target_files_Path:

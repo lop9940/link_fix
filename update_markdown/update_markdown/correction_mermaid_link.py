@@ -58,10 +58,8 @@ def generate_link(node_id, node_name):
 
 def main():
 
-    target_files_Path = file_operation.process_files_Path()
-    backup_dir_Path = file_operation.backup_dir_Path()
-    backup_dir_path = str(backup_dir_Path)
-
+    target_files_Path = file_operation.get_process_files_Path()
+    backup_dir_path = str(file_operation.get_backup_dir_Path())
     file_operation.reset_dir(backup_dir_path)
 
     for file_Path in target_files_Path:
