@@ -3,15 +3,15 @@ from common import name
 
 
 def all_re_patterns():
-    return {"P_node_id": "(?P<space>\s*?)(?P<node_id>p\d+)(?P<node_start>\(\[)(?P<node_name>.*?)(?P<node_end>\]\))",
-            "D_node_id": "(?P<space>\s*?)(?P<node_id>d\d+)(?P<node_start>\[/)(?P<node_name>.*?)(?P<node_end>/\])",
+    return {"P_node": "(?P<space>\s*?)(?P<node_id>p\d+)(?P<node_start>\(\[)(?P<node_name>.*?)(?P<node_end>\]\))",
+            "D_node": "(?P<space>\s*?)(?P<node_id>d\d+)(?P<node_start>\[/)(?P<node_name>.*?)(?P<node_end>/\])",
             "P_link": "(?P<space>\s*?)(?P<click>click\s)(?P<node_id>p\d+)(?P<url_start>\s\")(?P<url>.*?)(?P<url_end>\")",
             "D_link": "(?P<space>\s*?)(?P<click>click\s)(?P<node_id>d\d+)(?P<url_start>\s\")(?P<url>.*?)(?P<url_end>\")",
             "link_comment": name.link_comment}
 
 
 def correction_re_pattern_names():
-    return ["P_node_id", "D_node_id", "P_link", "D_link", "link_comment"]
+    return ["P_node", "D_node", "P_link", "D_link", "link_comment"]
 
 
 def check_re_pattern_names():
