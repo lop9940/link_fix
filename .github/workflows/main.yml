@@ -6,32 +6,53 @@ on:
       - "feature/**"
       - "master"
 
+# jobs:
+#   correction_mermaid_link:    
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Setup Python
+#         uses: actions/setup-python@v2
+#         with:
+#           python-version: '3.8'
+#           architecture: 'x64'
+#       - name: Run correction_mermaid_link.py
+#         run: python update_markdown/update_markdown/correction_mermaid_link.py "${{ github.repository }}" "${{ github.ref_name }}"
+#       - name: Run Git
+#         run: |
+#           git config --global user.name "lop9940"
+#           git config --global user.email "qaqclop9940@gmail.com"
+#           git add .
+#           git commit -m "Update by GitHub Action run:correction_mermaid_link.py"
+#           git push
+#       - name: Run check_mermaid_link.py
+#         run: |
+#           python update_markdown/update_markdown/check_mermaid_link.py
+#       - name: Run Git
+#         run: |
+#           git config --global user.name "lop9940"
+#           git config --global user.email "qaqclop9940@gmail.com"
+#           git add .
+#           git commit -m "Update by GitHub Action run:check_mermaid_link.py"
+#           git push
+
 jobs:
-  correction_mermaid_link:    
+  run-textlint-minimum:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup Python
-        uses: actions/setup-python@v2
+      # - uses: actions/checkout@v3
+      #   with:
+      #     ref: ${{ github.event.pull_request.head.sha }}
+      - uses: actions/setup-node@v3
         with:
-          python-version: '3.8'
-          architecture: 'x64'
-      - name: Run correction_mermaid_link.py
-        run: python update_markdown/update_markdown/correction_mermaid_link.py "${{ github.repository }}" "${{ github.ref_name }}"
-      - name: Run Git
-        run: |
-          git config --global user.name "lop9940"
-          git config --global user.email "qaqclop9940@gmail.com"
-          git add .
-          git commit -m "Update by GitHub Action run:correction_mermaid_link.py"
-          git push
-      - name: Run check_mermaid_link.py
-        run: |
-          python update_markdown/update_markdown/check_mermaid_link.py
-      - name: Run Git
-        run: |
-          git config --global user.name "lop9940"
-          git config --global user.email "qaqclop9940@gmail.com"
-          git add .
-          git commit -m "Update by GitHub Action run:check_mermaid_link.py"
-          git push
+          node-version: 14
+      - run: npm install
+      - run: npx textlint ./process/*.md >> ./.textlint.log
+      - if: ${{ failure() }}
+        run: gh pr comment --body-file ./.textlint.log "${URL}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          URL: ${{ github.event.pull_request.html_url }}
+
