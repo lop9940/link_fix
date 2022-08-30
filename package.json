@@ -1,0 +1,22 @@
+{
+  "name": "ichihara_ryujiro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "textlint": "^12.2.1",
+    "textlint-rule-en-spell": "^1.2.4",
+    "textlint-rule-ng-word": "^1.0.0",
+    "textlint-rule-preset-ja-technical-writing": "^7.0.0",
+    "textlint-rule-spellcheck-tech-word": "^5.0.0"
+  },
+  "dependencies": {
+    "textlint-filter-rule-allowlist": "^4.0.0"
+  }
+}
