@@ -53,7 +53,9 @@ jobs:
               textlint \
               textlint-filter-rule-allowlist \
               textlint-rule-preset-ja-technical-writing
-      - run: npx textlint --version
+      - run: |
+          npx textlint --version
+          pwd
       # - run: npx textlint ./process/*.md >> ./.textlint.log
       # - if: ${{ failure() }}
       #   run: gh pr comment --body-file ./.textlint.log "${URL}"
