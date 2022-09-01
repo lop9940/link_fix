@@ -56,6 +56,7 @@ jobs:
       # - run: npx textlint ./process/*.md >> ./.textlint.log
       - run: npx textlint --version >> ./.textlint.ver
       - run: cat .textlint.ver
+      - run: npx textlint ./process/*.md
       # - if: ${{ failure() }}
       #   run: ls
         # run: gh pr comment --body-file ./.textlint.log "${URL}"
