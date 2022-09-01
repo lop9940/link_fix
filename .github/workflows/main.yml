@@ -54,8 +54,8 @@ jobs:
             textlint-filter-rule-allowlist \
             textlint-rule-preset-ja-technical-writing
       - run: npx textlint ./process/*.md >> ./.textlint.log
-      - run: ls
       - if: ${{ failure() }}
+        run: ls
         run: gh pr comment --body-file ./.textlint.log "${URL}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
