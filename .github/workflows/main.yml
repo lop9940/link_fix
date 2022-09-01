@@ -56,10 +56,9 @@ jobs:
       - run: npx textlint ./process/*.md >> ./.textlint.log
       - if: ${{ failure() }}
         run: ls
-        run: gh pr comment --body-file ./.textlint.log "${URL}"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          URL: ${{ github.event.pull_request.html_url }}
-          
+        # run: gh pr comment --body-file ./.textlint.log "${URL}"
+        # env:
+        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #   URL: ${{ github.event.pull_request.html_url }}
 
 
