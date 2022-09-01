@@ -48,7 +48,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 14
-      - run: npm install
+      - run: |
+          npm install --save-dev \
+            textlint \
+            textlint-filter-rule-allowlist \
+            textlint-rule-preset-ja-technical-writing
       - run: cat ./process/*.md
 
       # - run: npx textlint ./process/*.md >> ./.textlint.log
