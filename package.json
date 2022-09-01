@@ -1,0 +1,25 @@
+{
+  "name": "link_fix",
+  "version": "1.0.0",
+  "description": "<!-- omit in toc --> # link_fix",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lop9940/link_fix.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lop9940/link_fix/issues"
+  },
+  "homepage": "https://github.com/lop9940/link_fix#readme",
+  "devDependencies": {
+    "textlint": "^12.2.1",
+    "textlint-filter-rule-allowlist": "^4.0.0",
+    "textlint-rule-preset-ja-technical-writing": "^7.0.0"
+  }
+}
