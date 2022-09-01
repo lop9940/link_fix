@@ -48,20 +48,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 14
-      - run: |
-          npm install --save-dev \
-              textlint \
-              textlint-filter-rule-allowlist \
-              textlint-rule-preset-ja-technical-writing
-      - run: |
-          npx textlint --version
-          pwd
-          ls
-      # - run: npx textlint ./process/*.md >> ./.textlint.log
-      # - if: ${{ failure() }}
-      #   run: gh pr comment --body-file ./.textlint.log "${URL}"
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     URL: ${{ github.event.pull_request.html_url }}
+      - run: npm install
+      - run: npx textlint ./process/*.md >> ./.textlint.log
+      - if: ${{ failure() }}
+        run: gh pr comment --body-file ./.textlint.log "${URL}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          URL: ${{ github.event.pull_request.html_url }}
 
 
