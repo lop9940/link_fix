@@ -5,6 +5,7 @@ on:
     types: [ opened, synchronize ]
     # paths: [ 'contents/**/*.md' ]
 
+
 jobs:
   run-textlint-minimum:
     runs-on: ubuntu-latest
