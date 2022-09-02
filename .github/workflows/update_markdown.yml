@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - "feature/**"
-      - "master"
 
 jobs:
   correction_mermaid_link:    
