@@ -6,7 +6,8 @@ from common import name
 
 def reset_dir(dir_path):
 
-    shutil.rmtree(dir_path)
+    if os.path.isdir(dir_path):
+        shutil.rmtree(dir_path)
     os.mkdir(dir_path)
 
 
